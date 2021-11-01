@@ -8,19 +8,20 @@ interface RegisterProps {
   children: ReactNode;
 }
 
-interface UserData {
+interface UserDataTwo {
+  user: string;
   email: string;
   password: string;
   checkPassword: string;
 }
 
-interface AuthProviderData {
+interface RegisterProviderData {
   authToken: string;
-  register: (userData: UserData, history: History) => void;
+  registerForm: (userData: UserDataTwo, history: History) => void;
 }
 
-export const AuthContext = createContext<AuthProviderData>(
-  {} as AuthProviderData
+export const RegisterContext = createContext<RegisterProviderData>(
+  {} as RegisterProviderData
 );
 
 export const AuthProvider = ({ children }: RegisterProps) => {
@@ -30,7 +31,7 @@ export const AuthProvider = ({ children }: RegisterProps) => {
     () => localStorage.getItem("token") || ""
   );
 
-  const register = (userData: UserData, history: History) => {
+  const registerForm = (userData: UserDataTwo, history: History) => {
     api
       .post("/register", userData)
       .then((response) => {
@@ -46,10 +47,10 @@ export const AuthProvider = ({ children }: RegisterProps) => {
   };
 
   return (
-    <AuthContext.Provider value={{ authToken, register }}>
+    <RegisterContext.Provider value={{ authToken, registerForm }}>
       {children}
-    </AuthContext.Provider>
+    </RegisterContext.Provider>
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useRegister = () => useContext(RegisterContext);
