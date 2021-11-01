@@ -24,7 +24,7 @@ export const RegisterContext = createContext<RegisterProviderData>(
   {} as RegisterProviderData
 );
 
-export const AuthProvider = ({ children }: RegisterProps) => {
+export const RegisterProvider = ({ children }: RegisterProps) => {
   const history = useHistory();
 
   const [authToken, setAuthToken] = useState(
