@@ -3,21 +3,14 @@ import { useHistory } from "react-router-dom";
 import api from "./../../services/api";
 import { History } from "history";
 import { toast } from "react-toastify";
+import { UserRegisterFormat } from "../../interfaces/interfaces";
 
 interface RegisterProps {
   children: ReactNode;
 }
 
-interface UserDataTwo {
-  user: string;
-  email: string;
-  password: string;
-  checkPassword: string;
-}
-
 interface RegisterProviderData {
-  authToken: string;
-  registerForm: (userData: UserDataTwo, history: History) => void;
+  registerForm: (userData: UserRegisterFormat, history: History) => void;
 }
 
 export const RegisterContext = createContext<RegisterProviderData>(
@@ -27,27 +20,24 @@ export const RegisterContext = createContext<RegisterProviderData>(
 export const RegisterProvider = ({ children }: RegisterProps) => {
   const history = useHistory();
 
-  const [authToken, setAuthToken] = useState(
-    () => localStorage.getItem("token") || ""
-  );
-
-  const registerForm = (userData: UserDataTwo, history: History) => {
+  const registerForm = (userData: UserRegisterFormat, history: History) => {
+    const { email, password, name } = userData;
     api
-      .post("/register", userData)
+      .post("/register", {
+        email: email,
+        password: password,
+        name: name,
+      })
       .then((response) => {
-        localStorage.setItem("token", response.data.token);
-
-        setAuthToken(response.data.token);
-
         toast.success("Registro Efetuado com sucesso");
 
-        history.push("/dashboard");
+        history.push("/login");
       })
       .catch((err) => toast.error("Problemas de cadastro"));
   };
 
   return (
-    <RegisterContext.Provider value={{ authToken, registerForm }}>
+    <RegisterContext.Provider value={{ registerForm }}>
       {children}
     </RegisterContext.Provider>
   );
