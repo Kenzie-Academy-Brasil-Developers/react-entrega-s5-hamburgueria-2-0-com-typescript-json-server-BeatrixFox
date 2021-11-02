@@ -1,13 +1,13 @@
 import { Toaster } from "react-hot-toast";
 import "./App.css";
-import RoutesPath from "./routes";
+import Routes from "./routes/index";
 import GlobalStyles from "./styles/global";
 
 function App() {
   return (
     <div className="App">
       <GlobalStyles />
-      <RoutesPath />
+      <Routes />
       <Toaster
         toastOptions={{
           success: {

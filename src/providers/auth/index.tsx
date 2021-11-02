@@ -35,9 +35,9 @@ export const AuthProvider = ({ children }: AuthProps) => {
     api
       .post("/login", userData)
       .then((response) => {
-        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("token", `${response.data.accessToken}`);
         localStorage.setItem("userId", response.data.user.id);
-        setAuthToken(response.data.token);
+        setAuthToken(`${response.data.accessToken}`);
         setUserId(response.data.user.id);
 
         toast.success("Login Efetuado com sucesso");

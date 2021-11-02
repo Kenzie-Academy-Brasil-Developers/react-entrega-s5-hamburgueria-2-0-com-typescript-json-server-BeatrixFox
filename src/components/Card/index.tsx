@@ -1,30 +1,26 @@
 import { ItemLiContainer } from "./style";
 import { MenuItemFormat } from "../../interfaces/interfaces";
-import { useCart } from "../../providers/cart";
+import { useCart } from "../../providers/cart/index";
 
 interface CardProps {
   item: MenuItemFormat;
 }
 
 export const Card = ({ item }: CardProps) => {
-  const { name, section, price, img } = item;
+  const { name, category, price, image } = item;
 
   const { handleAddToCart } = useCart();
-
-  const handleAdd = (item: MenuItemFormat) => {
-    handleAddToCart(item);
-  };
 
   return (
     <ItemLiContainer>
       <div>
-        <img src={img} alt={name} />
+        <img src={image} alt={name} />
       </div>
       <h3>{name}</h3>
-      <h5>{section}</h5>
-      <p>R$ {price.toFixed(2)}</p>
+      <h5>{category}</h5>
+      <p>R$ {price}</p>
 
-      <button onClick={() => handleAdd(item)}>Adicionar</button>
+      <button onClick={() => handleAddToCart(item)}>Adicionar</button>
     </ItemLiContainer>
   );
 };

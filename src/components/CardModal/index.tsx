@@ -6,7 +6,7 @@ import {
   TotalCartInfo,
 } from "./style";
 import { FaTrash } from "react-icons/fa";
-import { useCart } from "../../providers/cart";
+import { useCart } from "../../providers/cart/index";
 import shoppingbag from "../../assets/shopping-bag.png";
 
 export const CardModal = () => {
@@ -17,7 +17,6 @@ export const CardModal = () => {
     deleteAllItemsInCart,
   } = useCart();
 
-  // console.log("cart no card modal", cart);
   return (
     <CardModalContainer>
       <GreenTopBar>

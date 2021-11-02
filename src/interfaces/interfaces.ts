@@ -1,8 +1,8 @@
 export interface MenuItemFormat {
   name: string;
-  section: string;
+  category: string;
   price: number;
-  img: string;
+  image: string;
 }
 
 export interface UserLoginFormat {

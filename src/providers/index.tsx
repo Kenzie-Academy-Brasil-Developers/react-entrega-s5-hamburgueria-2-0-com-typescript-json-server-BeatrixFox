@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { AuthProvider } from "./auth";
-import { ProductsProvider } from "./products";
+import { CartProvider } from "./cart";
 import { RegisterProvider } from "./register";
 
 interface ProviderProps {
@@ -8,27 +8,6 @@ interface ProviderProps {
 }
 
 const Providers = ({ children }: ProviderProps) => {
-  return (
-    <ProductsProvider>
-      <RegisterProvider>
-        <AuthProvider>{children}</AuthProvider>;
-      </RegisterProvider>
-    </ProductsProvider>
-  );
-};
-
-export default Providers;
-
-/**import { AuthProvider } from "./auth";
-import { ReactNode } from "react";
-import { RegisterProvider } from "./register";
-import { CartProvider } from "./cart";
-
-interface ProviderData {
-  children: ReactNode;
-}
-
-const ProvidersGathered = ({ children }: ProviderData) => {
   return (
     <AuthProvider>
       <RegisterProvider>
@@ -38,4 +17,4 @@ const ProvidersGathered = ({ children }: ProviderData) => {
   );
 };
 
-export default ProvidersGathered; */
+export default Providers;
