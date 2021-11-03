@@ -67,7 +67,7 @@ export const CardModal = () => {
             <TotalCartInfo>
               <p className="total">Total</p>
               <p className="totalNumber">
-                R${" "}
+                R$ &nbsp;&nbsp;
                 {cart
                   .reduce((acc, item) => acc + item.price * item.quantity, 0)
                   .toFixed(2)}

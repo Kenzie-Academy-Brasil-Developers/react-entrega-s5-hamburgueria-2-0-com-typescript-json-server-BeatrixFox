@@ -14,7 +14,7 @@ export const Card = ({ item }: CardProps) => {
   return (
     <ItemLiContainer>
       <div>
-        <img src={image} alt={name} />
+        <img src={`${image}`} alt={name} />
       </div>
       <h3>{name}</h3>
       <h5>{category}</h5>

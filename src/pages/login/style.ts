@@ -3,11 +3,9 @@ import styled from "styled-components";
 export const MainContainerLoginPage = styled.div`
   display: flex;
   flex-wrap: wrap;
-
-  width: 414px;
+  width: 90%;
   height: 690px;
   margin: 0 auto;
-
   background-color: #ffffff;
   border-radius: 5px;
 
@@ -20,19 +18,16 @@ export const MainContainerLoginPage = styled.div`
 `;
 
 export const ContainerLogin = styled.form`
-  width: 380px;
+  width: 90%;
   height: 461px;
   margin: 0 auto;
-
   border-radius: 5px;
   box-shadow: 0px 0px 30px -20px rgba(0, 0, 0, 0.25);
 
   h3 {
     margin: 16px 312px 19px 19px;
     text-align: left;
-
     color: var(--gray-scale-600);
-
     font-size: var(--font-size-heading3);
     font-weight: var(--font-w-bold);
 
@@ -42,18 +37,13 @@ export const ContainerLogin = styled.form`
   }
 
   input {
-    width: var(--input-mobile-width);
+    width: 90%;
     height: var(--input-mobile-height);
     margin-bottom: 25px;
     padding: 15px 20px;
-
     border-radius: var(--input-mobile-borderradius);
     border: none;
-
-    /* outline: red; */
-
     background-color: var(--gray-scale-0);
-
     font-size: var(--font-size-headline);
 
     :focus {
@@ -65,25 +55,29 @@ export const ContainerLogin = styled.form`
       color: var(--gray-scale-300);
     }
 
+    @media screen and (min-width: 500px) {
+      width: var(--input-mobile-width);
+    }
+
     @media screen and (min-width: 1024px) {
       width: var(--input-desktop-width);
     }
   }
   button {
     height: var(--input-mobile-height);
-    width: var(--input-mobile-width);
+    width: 90%;
     margin-bottom: 19px;
-
     font-size: var(--font-size-headline);
     font-weight: var(--font-w-semibold);
-
     color: #ffffff;
     background-color: var(--color-primary);
-
     border-radius: var(--input-mobile-borderradius);
     border: none;
-
     cursor: pointer;
+
+    @media screen and (min-width: 500px) {
+      width: var(--input-mobile-width);
+    }
 
     @media screen and (min-width: 1024px) {
       width: var(--input-desktop-width);
@@ -115,14 +109,17 @@ export const ContainerLogin = styled.form`
     color: var(--gray-scale-300);
   }
 
+  @media screen and (min-width: 500px) {
+    width: 380px;
+  }
+
   @media screen and (min-width: 1024px) {
     width: 500px;
-    height: 461px;
   }
 `;
 
 export const TitleContainer = styled.div`
-  width: 380px;
+  width: 100%;
   height: 227px;
   margin: 0 auto;
 
@@ -157,10 +154,8 @@ export const MessageCard = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-
-  width: 379px;
+  width: 100%;
   height: 95px;
-
   background-color: #fff;
   border: 1px solid var(--gray-scale-100);
   border-radius: 5px;
@@ -182,18 +177,25 @@ export const MessageCard = styled.div`
   }
 
   p {
-    width: 261px;
-    height: 64px;
-
+    width: 70%;
+    height: 85px;
     color: var(--gray-scale-300);
-
-    line-height: 21px;
+    line-height: 20px;
     text-align: left;
-    font-size: 14px;
+    font-size: 15px;
 
     span {
       color: var(--gray-scale-600);
       font-weight: var(--font-w-semibold);
+    }
+  }
+  @media screen and (min-width: 600px) {
+    width: 379px;
+    p {
+      width: 261px;
+      height: 64px;
+      line-height: 21px;
+      font-size: 14px;
     }
   }
 `;

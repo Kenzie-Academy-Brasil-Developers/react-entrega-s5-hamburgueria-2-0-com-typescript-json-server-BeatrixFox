@@ -27,19 +27,22 @@ export const CartProvider = ({ children }: CartProps) => {
   const { userId, authToken } = useAuth();
   const [cart, setCart] = useState<GetCartFormat[]>([] as GetCartFormat[]);
 
-  console.log("user id no card", userId);
-  console.log(authToken, userId);
-
-  useEffect(() => {
+  const getItemCart = () => {
     api
       .get(`/cart?userId=${userId}`, {
         headers: { Authorization: `Bearer ${authToken}` },
       })
       .then((response) => setCart(response.data))
       .catch((e) => console.log(e));
-  }, [userId, cart]);
+  };
 
-  console.log("cart no provider cart", cart);
+  useEffect(() => {
+    getItemCart();
+  }, []);
+
+  useEffect(() => {
+    getItemCart();
+  }, [userId, cart]);
 
   const notifyAlreadyAdded = () =>
     toast(
@@ -130,7 +133,7 @@ export const CartProvider = ({ children }: CartProps) => {
         headers: { Authorization: `Bearer ${authToken}` },
       })
       .then((response) => {
-        console.log(response.data);
+        toast.success("Item removido com sucesso");
       })
       .catch((e) => console.log(e.response.data.message));
   };
